@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RZG GAMING | Crafted to impress!</title>
+  
+  <!-- Fontlar & İkonlar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #07080a;
+      --bg-surface: #0e1117;
+      --bg-card: #131720;
+      --bg-card-hover: #191f2b;
+      --brand-red: #ff1a3c;
+      --brand-red-glow: rgba(255, 26, 60, 0.45);
+      --brand-cyan: #00f0ff;
+      --brand-cyan-glow: rgba(0, 240, 255, 0.35);
+      --text-main: #f5f7fb;
+      --text-muted: #8892a4;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Siber Arka Plan Deseni */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 10%, rgba(255, 26, 60, 0.06), transparent 45%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.04), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Kayan Bant (Marquee) Genel */
+    .marquee-strip {
+      background: #020305;
+      border-bottom: 1px solid rgba(255, 26, 60, 0.25);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 9px 0;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marqueeRun 24s linear infinite;
+    }
+
+    .marquee-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b0b8c6;
+      margin-right: 32px;
+    }
+
+    .marquee-track span i {
+      color: var(--brand-red);
+      font-size: 0.65rem;
+      animation: pulseGlow 1.5s ease-in-out infinite alternate;
+    }
+
+    .marquee-track span strong {
+      color: var(--brand-cyan);
+    }
+
+    @keyframes marqueeRun {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Ayırıcı Kayan Bant (Ara Bant) */
+    .divider-marquee {
+      background: linear-gradient(90deg, #110306, #070e17, #110306);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 50px 0;
+    }
+
+    .divider-marquee .marquee-track {
+      animation: marqueeRunReverse 22s linear infinite;
+    }
+
+    .divider-marquee span {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-right: 40px;
+    }
+
+    .divider-marquee span strong {
+      color: #fff;
+      text-shadow: 0 0 10px var(--brand-red-glow);
+    }
+
+    @keyframes marqueeRunReverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Pulse Efekt */
+    @keyframes pulseGlow {
+      from { transform: scale(0.9); opacity: 0.7; }
+      to { transform: scale(1.2); opacity: 1; text-shadow: 0 0 12px var(--brand-red); }
+    }
+
+    /* Header & Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 10, 14, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Logo - Özgün Espor Logosu */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-emblem {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1a0206 0%, #2b030b 100%);
+      border: 2px solid var(--brand-red);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 0 16px var(--brand-red-glow);
+      transform: rotate(-3deg);
+      transition: transform 0.3s;
+    }
+
+    .brand-logo:hover .logo-emblem {
+      transform: rotate(0deg) scale(1.05);
+    }
+
+    .logo-emblem i {
+      font-size: 1.4rem;
+      color: #fff;
+      filter: drop-shadow(0 0 6px var(--brand-red));
+    }
+
+    .logo-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .logo-title span {
+      color: var(--brand-red);
+      text-shadow: 0 0 12px var(--brand-red-glow);
+    }
+
+    .logo-slogan {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--brand-cyan);
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    /* Navigasyon Menüsü */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      color: #abb3c4;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--brand-red);
+      transition: width 0.25s ease;
+      box-shadow: 0 0 8px var(--brand-red);
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Arama Barı */
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 6px 14px;
+      transition: all 0.2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--brand-cyan);
+      box-shadow: 0 0 12px var(--brand-cyan-glow);
+      background: rgba(0, 240, 255, 0.04);
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      width: 120px;
+      transition: width 0.3s ease;
+    }
+
+    .search-box input:focus {
+      width: 170px;
+    }
+
+    .search-box button {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Hero Bölümü */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 48px;
+      background: linear-gradient(to right, rgba(7, 8, 10, 0.96) 30%, rgba(7, 8, 10, 0.45)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 680px;
+      z-index: 2;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 16px;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid var(--brand-cyan);
+      color: var(--brand-cyan);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      margin-bottom: 22px;
+      box-shadow: 0 0 15px var(--brand-cyan-glow);
+    }
+
+    .hero-tag span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-cyan);
+      animation: pulseGlow 1s infinite alternate;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      line-height: 1.05;
+      font-weight: 900;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 span.highlight {
+      background: linear-gradient(90deg, #fff, var(--brand-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+    }
+
+    .hero-slogan-lead {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--brand-cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-shadow: 0 0 14px var(--brand-cyan-glow);
+    }
+
+    .hero p.lead-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 35px;
+      line-height: 1.6;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      background: var(--brand-red);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      box-shadow: 0 0 25px var(--brand-red-glow);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: #e00f30;
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(255, 26, 60, 0.7);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+    }
+
+    /* Genel Bölüm Stilleri */
+    .section {
+      padding: 70px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 18px;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 span {
+      color: var(--brand-red);
+      text-shadow: 0 0 15px var(--brand-red-glow);
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-top: 6px;
+    }
+
+    /* Kategori Grid - Ana Menüyle Uyumlu */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 60px;
+    }
+
+    .cat-box {
+      position: relative;
+      height: 340px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      display: flex;
+      align-items: flex-end;
+      padding: 26px;
+      background: #0d1015;
+      transition: all 0.35s ease;
+    }
+
+    .cat-box img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      z-index: 1;
+    }
+
+    .cat-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 8, 10, 0.1) 25%, rgba(7, 8, 10, 0.95) 100%);
+      z-index: 2;
+    }
+
+    .cat-box:hover {
+      border-color: var(--brand-red);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--brand-red-glow);
+    }
+
+    .cat-box:hover img {
+      transform: scale(1.08);
+    }
+
+    .cat-box-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .cat-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+
+    .cat-box span {
+      color: var(--brand-cyan);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Ürün Kartları Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--brand-red);
+      box-shadow: 0 8px 24px var(--brand-red-glow);
+    }
+
+    .product-img-wrap {
+      position: relative;
+      height: 250px;
+      background: #090b0e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      z-index: 3;
+      letter-spacing: 0.5px;
+    }
+
+    .product-tag.hot {
+      border-color: var(--brand-red);
+      color: var(--brand-red);
+    }
+
+    .product-info {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.72rem;
+      color: var(--brand-cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.45;
+      flex-grow: 1;
+    }
+
+    .product-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .spec-chip {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      color: #b8c1cf;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 14px;
+    }
+
+    .price {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .btn-buy {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-buy:hover {
+      background: var(--brand-red);
+      color: #fff;
+    }
+
+    /* Cockpit Amiral Gemisi Bölümü */
+    .cockpit-banner {
+      background: linear-gradient(135deg, #10141d 0%, #0a0c10 100%);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 12px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 60px;
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cockpit-banner::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, var(--brand-cyan-glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cockpit-content h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .cockpit-content h3 span {
+      color: var(--brand-cyan);
+    }
+
+    .cockpit-specs {
+      list-style: none;
+      margin: 20px 0 30px;
+    }
+
+    .cockpit-specs li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #ced6e2;
+    }
+
+    .cockpit-specs li i {
+      color: var(--brand-cyan);
+      font-size: 1.1rem;
+    }
+
+    .cockpit-img-box {
+      height: 380px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .cockpit-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .cockpit-banner:hover .cockpit-img-box img {
+      transform: scale(1.04);
+    }
+
+    /* Satış Noktaları */
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .location-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 30px;
+      transition: all 0.25s;
+    }
+
+    .location-card:hover {
+      border-color: var(--brand-red);
+      transform: translateY(-4px);
+    }
+
+    .location-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .hq-tr {
+      background: rgba(255, 26, 60, 0.15);
+      color: var(--brand-red);
+      border: 1px solid var(--brand-red);
+    }
+
+    .hq-uk {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--brand-cyan);
+      border: 1px solid var(--brand-cyan);
+    }
+
+    .store-tr {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .location-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .location-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .location-meta {
+      font-size: 0.85rem;
+      color: #ced6e2;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .location-meta i {
+      width: 20px;
+      color: var(--brand-red);
+    }
+
+    /* Footer */
+    footer {
+      background: #040507;
+      border-top: 1px solid var(--border-color);
+      padding: 60px 40px 30px;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto 50px auto;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 14px;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: #636b79;
+    }
+
+    .footer-signature {
+      color: var(--brand-cyan);
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .category-grid, .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .cockpit-banner {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .category-grid, .locations-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sonsuz Kayan Üst Gaming Marquee -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span><i class="fa-solid fa-bolt"></i> CRAFTED TO IMPRESS!</span>
+      <span><i class="fa-solid fa-gamepad"></i> <strong>RZG GAMING</strong> NEXT-GEN BATTLESTATIONS</span>
+      <span><i class="fa-solid fa-shield-halved"></i> ENGINEERING BY QBOARD LTD. (UK)</span>
+      <span><i class="fa-solid fa-microchip"></i> REVOLUTIONARY ERGONOMICS & RGB COCKPITS</span>
+      <span><i class="fa-solid fa-location-crosshairs"></i> TÜRKİYE MERKEZ: İZMİR SHOWROOM & LOJİSTİK</span>
+      <span><i class="fa-solid fa-fire"></i> LEVEL UP YOUR ARENA</span>
+      <!-- Döngü Devamı -->
+      <span><i class="fa-solid fa-bolt"></i> CRAFTED TO IMPRESS!</span>
+      <span><i class="fa-solid fa-gamepad"></i> <strong>RZG GAMING</strong> NEXT-GEN BATTLESTATIONS</span>
+      <span><i class="fa-solid fa-shield-halved"></i> ENGINEERING BY QBOARD LTD. (UK)</span>
+      <span><i class="fa-solid fa-microchip"></i> REVOLUTIONARY ERGONOMICS & RGB COCKPITS</span>
+      <span><i class="fa-solid fa-location-crosshairs"></i> TÜRKİYE MERKEZ: İZMİR SHOWROOM & LOJİSTİK</span>
+      <span><i class="fa-solid fa-fire"></i> LEVEL UP YOUR ARENA</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <!-- Logo Alanı -->
+    <a href="#" class="brand-logo">
+      <div class="logo-emblem">
+        <i class="fa-solid fa-dragon"></i>
+      </div>
+      <div class="logo-meta">
+        <div class="logo-title">RZG <span>GAMING</span></div>
+        <div class="logo-slogan">Crafted to impress!</div>
+      </div>
+    </a>
+
+    <!-- İstenen Menü Dizilimi -->
+    <nav>
+      <a href="#tum-urunler">Tüm Ürünler</a>
+      <a href="#koltuklar">Koltuklar</a>
+      <a href="#masalar">Masalar</a>
+      <a href="#ozel-kabinler">Özel Kabinler</a>
+      <a href="#aksesuarlar">Premium Aksesuarlar</a>
+      <a href="#diger">Diğer</a>
+    </nav>
+
+    <!-- Entegre Arama Çubuğu (Ara) -->
+    <div class="search-box">
+      <input type="text" placeholder="Ürün ara..." aria-label="Ara">
+      <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero Bölümü -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        Birleşik Krallık QBOARD Ltd. İştirakidir
+      </div>
+      <div class="hero-slogan-lead">Crafted to impress!</div>
+      <h1>Mükemmel Savaş İstasyonunun <span class="highlight">Mühendisliği</span></h1>
+      <p class="lead-desc">Sadece bir oyuncu mobilyası değil. Odaya entegre edilebilir kokpit kabinleri, 5 amiral elektrikli masa ve 5 donanımlı RGB koltuk ile profesyonel espor alanınızı baştan yaratın.</p>
+      <div class="hero-btns">
+        <a href="#tum-urunler" class="btn-primary"><i class="fa-solid fa-layer-group"></i> Tüm Ürünleri Gör</a>
+        <a href="#ozel-kabinler" class="btn-secondary">Kabin Simülatörleri</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ara Kayan Bant -->
+  <div class="divider-marquee">
+    <div class="marquee-track">
+      <span>PERFORMANCE <strong>MOBİLYA</strong></span>
+      <span>/// COCKPIT <strong>SIMULATION</strong></span>
+      <span>/// ZERO-LATENCY <strong>RGB ARGB</strong></span>
+      <span>/// QBOARD UK <strong>ENGINEERING</strong></span>
+      <span>/// BATTLESTATIONS <strong>FOR CHAMPIONS</strong></span>
+      <span>/// PERFORMANCE <strong>MOBİLYA</strong></span>
+      <span>/// COCKPIT <strong>SIMULATION</strong></span>
+      <span>/// ZERO-LATENCY <strong>RGB ARGB</strong></span>
+      <span>/// QBOARD UK <strong>ENGINEERING</strong></span>
+      <span>/// BATTLESTATIONS <strong>FOR CHAMPIONS</strong></span>
+    </div>
+  </div>
+
+  <!-- Ana Bölüm (Tüm Ürünler / Koleksiyonlar) -->
+  <section class="section" id="tum-urunler">
+    <div class="section-title">
+      <div>
+        <h2>Ürün <span>Koleksiyonları</span></h2>
+        <p>Oyun odanızı kusursuz bir oyuncu disiplini ile donatın.</p>
+      </div>
+    </div>
+
+    <!-- Menü İle Uyumlu Kategori Kartları ve İlettiğin Resimler -->
+    <div class="category-grid">
+      <!-- Özel Kabinler (Zio sim-2 görseli) -->
+      <a href="#ozel-kabinler" class="cat-box">
+        <img src="https://ziogaming.com/cdn/shop/files/sim-2.png?v=1788463434&width=1600" alt="Özel Kabinler">
+        <div class="cat-box-content">
+          <span><i class="fa-solid fa-angle-right"></i> 2 Özel Model</span>
+          <h3>Özel Kabinler</h3>
+        </div>
+      </a>
+
+      <!-- Koltuklar (Zio koltuk görseli) -->
+      <a href="#koltuklar" class="cat-box">
+        <img src="https://ziogaming.com/cdn/shop/files/4_236f6081-5bbe-40f1-8859-aa7769e41535.jpg?v=1786210137&width=1600" alt="Koltuklar">
+        <div class="cat-box-content">
+          <span><i class="fa-solid fa-angle-right"></i> 5 Donanımlı Seri</span>
+          <h3>Koltuklar</h3>
+        </div>
+      </a>
+
+      <!-- Masalar (Zio masa görseli) -->
+      <a href="#masalar" class="cat-box">
+        <img src="https://ziogaming.com/cdn/shop/files/masalar-2_cc1c9f28-f805-46fe-80a0-40f4ee9b426b.png?v=1788463434&width=1600" alt="Masalar">
+        <div class="cat-box-content">
+          <span><i class="fa-solid fa-angle-right"></i> 5 Akıllı Model</span>
+          <h3>Masalar</h3>
+        </div>
+      </a>
+
+      <!-- Premium Aksesuarlar (Currys Hero görseli) -->
+      <a href="#aksesuarlar" class="cat-box">
+        <img src="https://media.currys.biz/i/currysprod/tech-talk-gaming-pc-accessories-hero-image" alt="Premium Aksesuarlar">
+        <div class="cat-box-content">
+          <span><i class="fa-solid fa-angle-right"></i> Setup Ekipmanları</span>
+          <h3>Premium Aksesuarlar</h3>
+        </div>
+      </a>
+    </div>
+
+    <!-- ÖZEL KABİNLER BÖLÜMÜ -->
+    <div id="ozel-kabinler" style="scroll-margin-top: 100px;">
+      <div class="section-title">
+        <div>
+          <h2>Özel <span>Kabinler</span></h2>
+          <p>Odaya entegre olabilen bağımsız simülasyon ve tam izolasyon kabin sistemleri.</p>
+        </div>
+      </div>
+
+      <!-- Apex Pod 01 (İlettiğin Noa and Nani Station Görseli) -->
+      <div class="cockpit-banner">
+        <div class="cockpit-content">
+          <div class="hero-tag"><span class="dot"></span> FLAGSHIP MODEL 01</div>
+          <h3>RZG <span>Apex Pod 01</span></h3>
+          <p>Müstakil oyun odası hissini odanızın köşesine kurun. Özel yatak & çalışma modüllü simülasyon iskeleti, motorize monitör askısı, hava sirkülasyon kanalları ve ses emici zırh paneller.</p>
+          <ul class="cockpit-specs">
+            <li><i class="fa-solid fa-microchip"></i> Akıllı Entegre Güç Dağıtım Paneli</li>
+            <li><i class="fa-solid fa-sliders"></i> Zero-Gravity Motorize Ayarlanabilir İskelet</li>
+            <li><i class="fa-solid fa-lightbulb"></i> Ses ve Müziğe Duyarlı Reaktif ARGB Ambiyans</li>
+          </ul>
+          <a href="#diger" class="btn-primary">İzmir Showroom'da Canlı Gör</a>
+        </div>
+        <div class="cockpit-img-box">
+          <img src="https://www.noaandnani.co.uk/cdn/shop/files/GamingStationBlackABlue_Red-min_1.jpg?v=1744911987&width=800" alt="RZG Apex Pod 01">
+        </div>
+      </div>
+
+      <!-- Orbit Titan 02 (İlettiğin Lenovo Gaming Station Görseli) -->
+      <div class="cockpit-banner" style="border-color: rgba(255,26,60,0.3);">
+        <div class="cockpit-content">
+          <div class="hero-tag" style="border-color: var(--brand-red); color: var(--brand-red); background: rgba(255,26,60,0.1);"><span class="dot" style="background: var(--brand-red);"></span> FLAGSHIP MODEL 02</div>
+          <h3>RZG <span>Orbit Titan 02</span></h3>
+          <p>Uçuş ve yarış simülasyonları için özel kokpit şasisi. Çift pedal ayağı, hidrolik vites yuvaları ve entegre surround ses hoparlör yuvaları ile saf adrenalini yaşayın.</p>
+          <ul class="cockpit-specs">
+            <li><i class="fa-solid fa-car"></i> Fanatec, Moza ve Thrustmaster Tak-Çalıştır Platform</li>
+            <li><i class="fa-solid fa-shield-halved"></i> Güçlendirilmiş Çelik Şasi & Karbon Kaplama Paneller</li>
+            <li><i class="fa-solid fa-wind"></i> Çift Fanlı Havalandırma ve Bağımsız İklimlendirme Yuvası</li>
+          </ul>
+          <a href="#diger" class="btn-primary">Özel Sipariş & Randevu</a>
+        </div>
+        <div class="cockpit-img-box">
+          <img src="https://gaming.lenovo.com/emea/attachment.php?attachmentid=1529&d=1623754762" alt="RZG Orbit Titan 02">
+        </div>
+      </div>
+    </div>
+
+    <!-- KOLTUKLAR (5 DONANIMLI LEDLİ MODEL) -->
+    <div id="koltuklar" style="margin-top: 60px; scroll-margin-top: 100px;">
+      <div class="section-title">
+        <div>
+          <h2>Donanımlı <span>Koltuklar</span></h2>
+          <p>RGB adreslenebilir aydınlatma ve ergonomi standartlarını yeniden tanımlayan 5 amiral model.</p>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        <!-- Koltuk 1 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag hot">Amiral Gemisi</span>
+            <img src="https://ziogaming.com/cdn/shop/files/4_236f6081-5bbe-40f1-8859-aa7769e41535.jpg?v=1786210137&width=1600" alt="RZG Pulse Neo RGB">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Throne Serisi</span>
+            <h3 class="product-name">Pulse Neo RGB</h3>
+            <p class="product-desc">Kablosuz powerbank yuvalı, reaktif sese duyarlı RGB kenar aydınlatması ve manyetik hafızalı boyun yastığı.</p>
+            <div class="product-specs">
+              <span class="spec-chip">RGB Işık Hattı</span>
+              <span class="spec-chip">4D Kolçak</span>
+              <span class="spec-chip">Jel Destek</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">14.499 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Koltuk 2 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Pro Espor</span>
+            <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?q=80&w=600&auto=format&fit=crop" alt="RZG Titan Armor">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Throne Serisi</span>
+            <h3 class="product-name">Titan Armor LED</h3>
+            <p class="product-desc">Entegre mekanik bel desteği ayar çarkı, güçlendirilmiş alüminyum yıldız ayak ve difüzörlü neon sırt logosu.</p>
+            <div class="product-specs">
+              <span class="spec-chip">Mekanik Bel</span>
+              <span class="spec-chip">RGB Logo</span>
+              <span class="spec-chip">165° Yatış</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">16.299 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Koltuk 3 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Nefes Alabilir</span>
+            <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=600&auto=format&fit=crop" alt="RZG Phantom Fabric">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Throne Serisi</span>
+            <h3 class="product-name">Phantom Air Mesh</h3>
+            <p class="product-desc">Yüksek hava geçirgenli dokuma kumaş gövde, terletmeyen nano yüzey ve alt gövde altı LED havuzu.</p>
+            <div class="product-specs">
+              <span class="spec-chip">Dokuma Kumaş</span>
+              <span class="spec-chip">Zemin LED</span>
+              <span class="spec-chip">Manyetik Başlık</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">13.899 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Koltuk 4 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag hot">Yeni</span>
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" alt="RZG Venom Cyber">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Throne Serisi</span>
+            <h3 class="product-name">Venom Cyber Neon</h3>
+            <p class="product-desc">Telefon uygulamasıyla kontrol edilebilen 360 modlu RGB animasyonlar, karbon desenli yan kanatlar.</p>
+            <div class="product-specs">
+              <span class="spec-chip">App Kontrollü</span>
+              <span class="spec-chip">Karbon Kaplama</span>
+              <span class="spec-chip">Class 4 Amortisör</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">15.199 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Koltuk 5 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Simülasyon</span>
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=600&auto=format&fit=crop" alt="RZG Veloce GT">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Throne Serisi</span>
+            <h3 class="product-name">Veloce GT Track</h3>
+            <p class="product-desc">Safkan yarış koltuğu ergonomisi, sertleştirilmiş kalıp dökme sünger ve çift hat yarış LED şeritleri.</p>
+            <div class="product-specs">
+              <span class="spec-chip">Bucket Seat</span>
+              <span class="spec-chip">Yarış Serisi</span>
+              <span class="spec-chip">Çift RGB Hat</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">17.499 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MASALAR (5 FARKLI MODEL) -->
+    <div id="masalar" style="margin-top: 80px; scroll-margin-top: 100px;">
+      <div class="section-title">
+        <div>
+          <h2>Profesyonel <span>Masalar</span></h2>
+          <p>Kablo karmaşasını tarihe gömen, çift motorlu ve karbon fiber yüzeyli 5 model.</p>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        <!-- Masa 1 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag hot">Motorize</span>
+            <img src="https://ziogaming.com/cdn/shop/files/masalar-2_cc1c9f28-f805-46fe-80a0-40f4ee9b426b.png?v=1788463434&width=1600" alt="Horizon 160 Pro">
+          </div>
+          <div class="product-info">
+            <span class="product-category">BattleDesk Serisi</span>
+            <h3 class="product-name">Horizon 160 Pro Elevate</h3>
+            <p class="product-desc">Çift motorlu elektrikli yükseklik ayarı, 4 hafıza tuşu, gizli kablo tavası ve priz istasyonu.</p>
+            <div class="product-specs">
+              <span class="spec-chip">160x80 cm</span>
+              <span class="spec-chip">Çift Motor</span>
+              <span class="spec-chip">Hafızalı Panel</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">18.900 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Masa 2 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Full Mousepad</span>
+            <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=600&auto=format&fit=crop" alt="Vortex Carbon 140">
+          </div>
+          <div class="product-info">
+            <span class="product-category">BattleDesk Serisi</span>
+            <h3 class="product-name">Vortex Carbon 140</h3>
+            <p class="product-desc">Karbon doku kaplama, tüm yüzeyi kaplayan su geçirmez dikişli mousepad ve kulaklık askılığı.</p>
+            <div class="product-specs">
+              <span class="spec-chip">140x65 cm</span>
+              <span class="spec-chip">Tam Boy Pad</span>
+              <span class="spec-chip">Bardaklık + Askı</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">8.450 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Masa 3 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Köşe / L-Tipi</span>
+            <img src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?q=80&w=600&auto=format&fit=crop" alt="Apex L-Shape 180">
+          </div>
+          <div class="product-info">
+            <span class="product-category">BattleDesk Serisi</span>
+            <h3 class="product-name">Apex L-Shape 180 Corner</h3>
+            <p class="product-desc">Geniş yayıncılar ve simülasyoncular için L şeklinde devasa çalışma alanı ve monitör standı.</p>
+            <div class="product-specs">
+              <span class="spec-chip">180x120 cm L</span>
+              <span class="spec-chip">Köşe Tasarım</span>
+              <span class="spec-chip">Monitör Standlı</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">14.200 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Masa 4 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag hot">Cam & RGB</span>
+            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=600&auto=format&fit=crop" alt="Matrix RGB Glass 150">
+          </div>
+          <div class="product-info">
+            <span class="product-category">BattleDesk Serisi</span>
+            <h3 class="product-name">Matrix Glass RGB 150</h3>
+            <p class="product-desc">Temperli füme cam tabla altından süzülen sonsuzluk aynası (Infinity Mirror) LED efekti.</p>
+            <div class="product-specs">
+              <span class="spec-chip">150x75 cm</span>
+              <span class="spec-chip">Infinity RGB</span>
+              <span class="spec-chip">Temperli Cam</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">16.750 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Masa 5 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Kompakt Espor</span>
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop" alt="Compact Striker 120">
+          </div>
+          <div class="product-info">
+            <span class="product-category">BattleDesk Serisi</span>
+            <h3 class="product-name">Compact Striker 120</h3>
+            <p class="product-desc">Minimalist alanlar için sağlam Z-çerçeve çelik ayaklı, taşınması kolay turnuva modeli.</p>
+            <div class="product-specs">
+              <span class="spec-chip">120x60 cm</span>
+              <span class="spec-chip">Z-Frame Çelik</span>
+              <span class="spec-chip">Kablo Kanalı</span>
+            </div>
+            <div class="product-footer">
+              <div class="price">6.900 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREMIUM AKSESUARLAR BÖLÜMÜ -->
+    <div id="aksesuarlar" style="margin-top: 80px; scroll-margin-top: 100px;">
+      <div class="section-title">
+        <div>
+          <h2>Premium <span>Aksesuarlar</span></h2>
+          <p>Oyun alanınızı tamamlayan halılar, deskmatler, çelik mataralar ve espor giyimi.</p>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=600&auto=format&fit=crop" alt="RZG Shield Halı">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Zemin Koruması</span>
+            <h3 class="product-name">RZG Shield Akustik Halı</h3>
+            <p class="product-desc">120 cm sekizgen oyuncu koltuğu halısı. Parke çizilmelerini önler, tekerlek sesini yutar, altı kaymaz kauçuk.</p>
+            <div class="product-footer">
+              <div class="price">1.250 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://media.currys.biz/i/currysprod/tech-talk-gaming-pc-accessories-hero-image" alt="Glide XXL RGB Deskmat">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Yüzey Ekipmanı</span>
+            <h3 class="product-name">Glide XXL RGB Deskmat</h3>
+            <p class="product-desc">900x400 mm mikro dokuma pürüzsüz yüzey, dikişsiz RGB optik kenar ve leke tutmaz nano kaplama.</p>
+            <div class="product-footer">
+              <div class="price">890 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop" alt="RZG Termos">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Masa Aksesuarı</span>
+            <h3 class="product-name">RZG Thermo-Flask 750ml</h3>
+            <p class="product-desc">Çift cidarlı vakumlu paslanmaz çelik. 24 saat soğuk, 12 saat sıcak tutar. Mat siyah karbon gövdeli.</p>
+            <div class="product-footer">
+              <div class="price">650 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" alt="RZG Espor Tişört">
+          </div>
+          <div class="product-info">
+            <span class="product-category">Espor Tekstil</span>
+            <h3 class="product-name">RZG Pro-Dry Espor Tişört</h3>
+            <p class="product-desc">Hafif, terletmeyen dry-fit kumaş, reflektif QBOARD & RZG silikon kabartma baskılar.</p>
+            <div class="product-footer">
+              <div class="price">750 ₺</div>
+              <a href="#" class="btn-buy">İncele</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DİĞER (SATIŞ NOKTALARI, SERVİS & GENEL BİLGİLER) -->
+    <div id="diger" style="margin-top: 90px; scroll-margin-top: 100px;">
+      <div class="section-title">
+        <div>
+          <h2>Diğer & <span>Merkez Noktalarımız</span></h2>
+          <p>Koltuklarımızı deneyimleyin, kokpit kabinlerini İzmir veya Londra merkezlerimizde test edin.</p>
+        </div>
+      </div>
+
+      <div class="locations-grid">
+        <!-- İzmir HQ -->
+        <div class="location-card">
+          <span class="location-badge hq-tr">Türkiye Genel Müdürlük & Lojistik</span>
+          <h3>İzmir Operasyon & Showroom</h3>
+          <p>Tüm Ar-Ge, montaj ve Türkiye dağıtım merkezi ve amiral showroom alanımız İzmir yerleşkemizde hizmet vermektedir.</p>
+          <div class="location-meta">
+            <div><i class="fa-solid fa-location-dot"></i> İzmir, Türkiye</div>
+            <div><i class="fa-solid fa-phone"></i> +90 (232) 000 00 00</div>
+            <div><i class="fa-solid fa-envelope"></i> tr@rzggaming.com</div>
+          </div>
+        </div>
+
+        <!-- UK Global HQ -->
+        <div class="location-card">
+          <span class="location-badge hq-uk">Global HQ & Mühendislik (UK)</span>
+          <h3>QBOARD LTD. Head Office</h3>
+          <p>Markanın ana sermayedar ve uluslararası mühendislik tasarım ofisi.</p>
+          <div class="location-meta">
+            <div><i class="fa-solid fa-location-dot"></i> Block D, Bescot estate, Unit 4 Woden Rd W, Wednesbury WS10 7SG, Birleşik Krallık</div>
+            <div><i class="fa-solid fa-phone"></i> +44 121 000 0000</div>
+            <div><i class="fa-solid fa-envelope"></i> uk@qboard.co.uk</div>
+          </div>
+        </div>
+
+        <!-- İstanbul Deneyim Mağazası -->
+        <div class="location-card">
+          <span class="location-badge store-tr">Deneyim Mağazası</span>
+          <h3>İstanbul Konsept Mağaza</h3>
+          <p>Oyuncular ve espor kulüpleri için interaktif test ve simülatör deneyim merkezi.</p>
+          <div class="location-meta">
+            <div><i class="fa-solid fa-location-dot"></i> Levent / Maslak Teknoloji Vadisi, İstanbul, Türkiye</div>
+            <div><i class="fa-solid fa-phone"></i> +90 (212) 000 00 00</div>
+            <div><i class="fa-solid fa-clock"></i> Pazartesi - Cumartesi: 10:00 - 20:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo" style="margin-bottom: 12px;">
+          <div class="logo-emblem">
+            <i class="fa-solid fa-dragon"></i>
+          </div>
+          <div class="logo-meta">
+            <div class="logo-title">RZG <span>GAMING</span></div>
+            <div class="logo-slogan">Crafted to impress!</div>
+          </div>
+        </a>
+        <p>RZG GAMING, Birleşik Krallık merkezli <strong>QBOARD LTD.</strong> iştirakidir. Türkiye operasyonları ve lojistiği İzmir Genel Müdürlüğü tarafından yürütülmektedir.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ürün Serileri</h4>
+        <ul>
+          <li><a href="#ozel-kabinler">Özel Kabinler</a></li>
+          <li><a href="#koltuklar">Donanımlı Koltuklar</a></li>
+          <li><a href="#masalar">Profesyonel Masalar</a></li>
+          <li><a href="#aksesuarlar">Premium Aksesuarlar</a></li>
+          <li><a href="#tum-urunler">Tüm Koleksiyon</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="#diger">İzmir Genel Müdürlüğü</a></li>
+          <li><a href="#diger">QBOARD UK Şirket Bilgileri</a></li>
+          <li><a href="#diger">Deneyim Merkezleri</a></li>
+          <li><a href="#">Espor Sponsorlukları</a></li>
+          <li><a href="#">Garanti & Teknik Destek</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>İletişim & Konum</h4>
+        <ul>
+          <li><strong style="color: #fff;">UK:</strong> Wednesbury WS10 7SG</li>
+          <li><strong style="color: #fff;">TR:</strong> İzmir Genel Müdürlük</li>
+          <li><a href="mailto:info@rzggaming.com">info@rzggaming.com</a></li>
+          <li><a href="#">WhatsApp Destek Hattı</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 RZG GAMING &bull; Bir QBOARD LTD. Markasıdır. Tüm hakları saklıdır.</div>
+      <div class="footer-signature">Designed for Rüzgar Yalansız</div>
+    </div>
+  </footer>
+
+</body>
+</html>
